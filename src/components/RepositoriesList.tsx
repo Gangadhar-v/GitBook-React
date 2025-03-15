@@ -23,7 +23,7 @@ const RepositoriesList = ({reposData}:{reposData:RepoStructure[]})=>{
              <Pagination
          count={totalPages} 
          page={currentPage}
-         onChange={(_,value) => setCurrentPage(value)} 
+         onChange={(_: React.ChangeEvent<unknown>,value:number) => setCurrentPage(value)} 
          color="primary" 
          shape="rounded"
          sx={{ display: "flex", justifyContent: "center", mt: 2 }} 
