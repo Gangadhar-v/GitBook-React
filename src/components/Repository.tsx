@@ -2,47 +2,90 @@ import { RepoStructure } from "../utils/RepoStructure";
 import { Visibility, Star } from "@mui/icons-material";
 import { FaCodeBranch } from "react-icons/fa";
 
-const Repository = ({ prop }: { prop: RepoStructure })=>{
+const Repository = ({ prop }: { prop: RepoStructure }) => {
+  return (
+    <div
+      style={{
+        backgroundColor: "#161B22",
+        borderRadius: "15px",
+        maxWidth: "600px",
+        padding: "20px",
+        boxShadow: "0 0 10px rgba(88, 166, 255, 0.3)",
+        color: "#C9D1D9",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <h3
+        style={{
+          fontWeight: "bold",
+          fontSize: "22px",
+          textAlign: "center",
+          color: "#58A6FF",
+          marginBottom: "10px",
+        }}
+      >
+        {prop.name}
+      </h3>
 
+      <div
+        style={{
+          width: "100%",
+          height: "2px",
+          backgroundColor: "#58A6FF",
+          marginBottom: "15px",
+        }}
+      ></div>
 
-    return<>
-    <div style= { {backgroundColor:'#9d4edd',borderRadius:'25px',maxWidth:'600px',height:'auto'}}>
-        <div style={  {position:'relative',bottom:'5px',right:'5px',backgroundColor:'#edf2fb',borderRadius:'25px',width:'100%',height:'100%'}}>
-            
-            <h3 style={  {marginTop:'20px',fontWeight:'bolder',fontFamily:'monospace',fontSize:'25px',textAlign:'center',paddingTop:'20px'}}>{prop.name}</h3>
-
-            <div style={  {width:'100%', height:'2px',backgroundColor:'#8093f1'}}></div>
-
-            <div style={  {display:'flex',flexDirection:'row',rowGap:'10px',justifyContent:'space-evenly',marginTop:' 10px'}}>
-                <div style={  {display:'flex',flexDirection:'row',rowGap:'5px',alignItems:'center',justifyContent:'center'}}> <FaCodeBranch /> {prop.forks_count}</div>
-                <div  style={  {display:'flex',flexDirection:'row',rowGap:'5px',alignItems:'center',justifyContent:'center'}}> <Star/> {prop.stargazers_count}</div>
-                <div  style={  {display:'flex',flexDirection:'row',rowGap:'5px',alignItems:'center',justifyContent:'center'}}><Visibility/> {prop.watchers}</div>
-                <button style= {{backgroundColor:'black',padding:'5px',borderRadius:'10px',color:'white'}}>{prop.visibility}</button>
-            </div>
-
-            <h2 style={{fontFamily:'monospace',textOverflow: "ellipsis", 
-  maxWidth: "500px",maxHeight:'200px',paddingLeft:'10px',paddingBottom:'10px' }}>{prop.description}</h2>
-        {prop.language && (
-  <button 
-    style={{ 
-      backgroundColor: 'black', 
-      padding: '5px', 
-      borderRadius: '10px', 
-      color: 'white', 
-      textAlign: 'start' ,
-      marginBottom:'10px',
-      marginLeft:'10px'
-    }}
-  >
-    {prop.language}
-  </button>
-)}
-        
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+          marginBottom: "15px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+          <FaCodeBranch color="#8B949E" /> {prop.forks_count}
         </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+          <Star color="warning" /> {prop.stargazers_count}
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+          <Visibility color="info" /> {prop.watchers}
+        </div>
+      </div>
 
+      <p
+        style={{
+          fontSize: "14px",
+          textOverflow: "ellipsis",
+          maxWidth: "500px",
+          maxHeight: "100px",
+          overflow: "hidden",
+          paddingBottom: "10px",
+        }}
+      >
+        {prop.description}
+      </p>
+
+      {prop.language && (
+        <button
+          style={{
+            backgroundColor: "#58A6FF",
+            padding: "5px 10px",
+            borderRadius: "8px",
+            color: "#000",
+            fontWeight: "bold",
+            border: "none",
+            cursor: "pointer",
+            marginTop: "10px",
+          }}
+        >
+          {prop.language}
+        </button>
+      )}
     </div>
-    
-    </>
+  );
+};
 
-}
 export default Repository;

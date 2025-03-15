@@ -26,7 +26,7 @@ export default function GitProfile(){
         if(!username) return;
 
         const fetchUserData = async () => {
-            console.log('------------log------4---------', userError)
+          
             try{
                 setLoading(true);
                 const response = await fetch(`https://api.github.com/users/${username}`, {
@@ -41,7 +41,7 @@ export default function GitProfile(){
                 }
 
                 const data:ProfileStructure = await response.json();
-                console.log('--------------log---3-----------', data)
+               
                 if(data.message) {
                     setError(data.message)
                 }
@@ -49,10 +49,10 @@ export default function GitProfile(){
 
             }catch(error:any){
 
-                console.log(error)
+              
                 setError(error.message)
 
-                console.log('---------fetch failted--------',userError);
+               
             }finally{
                 setLoading(false);
 
@@ -82,8 +82,8 @@ export default function GitProfile(){
             }catch(error){
 
                 setRepoError('error occured in repo fetching');
-                console.log('---------fetch failted--------',repoError);
                 console.log(loading);
+                console.log(repoError);
             }
 
         }
